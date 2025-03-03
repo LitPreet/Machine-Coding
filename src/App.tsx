@@ -35,12 +35,15 @@ import CommentSection from "./components/nestedComments";
 import NestedCheckboxes from "./components/NestedCheckboxes";
 import GridLightCells from "./components/gridLightCells";
 import TicketApp from "./components/Ticket-app";
+import SaiCheckbox from "./components/SaiCheckbox";
+import WordOmmiter from "./components/wordOmmiter";
+import ProgressBar from "./components/ProgressBar";
+import InfiniteScrolling from "./components/InfiniteScrolling";
+import DragNDrop from "./components/DragNDrop";
 function App() {
   const [explorerData, setExplorerData] = useState<RoleTreeInterface>(explorer);
   const { insertNode } = useTraverseTree();
   console.log("i render")
-// import React from "react";
-// import UserClass from "./components/ClassBased";
 
   const handleInsertNode = ({
     folderId,
@@ -65,7 +68,7 @@ function App() {
   
       <div className="flex justify-center h-screen items-center">
         {/* <Button /> */}
-        {/* <Appy1 /> */}
+        <Appy1 />
       {/* <Checkbox /> */}
       {/* <InfiniteScroll /> */}
       {/* <TrafficLight /> */}
@@ -77,10 +80,10 @@ function App() {
       {/* <UseRef /> */}
       {/* <Timer /> */}
       {/* <InfiniteScrolling /> */}
-      {/* <div>
-      <h1>Loading Progress</h1>
-      <ProgressBar />
-    </div> */}
+      <div>
+      {/* <h1>Loading Progress</h1> */}
+      {/* <ProgressBar /> */}
+    </div>
     {/* <PaginationInter /> */}
       {/* <UseCallback /> */}
       {/* <StepperForm /> */}
@@ -95,9 +98,13 @@ function App() {
       {/* <Game /> */}
       {/* <TicTacToe /> */}
       {/* <CommentSection /> */}
+      {/* <DragNDrop /> */}
       {/* <NestedCheckboxes /> */}
       {/* <GridLightCells /> */}
-      <TicketApp />
+      {/* <TicketApp /> */}
+      {/* <SaiCheckbox /> */}
+      {/* <WordOmmiter /> */}
+      {/* <Tree /> */}
       </div>
     </div>
   );

@@ -1,5 +1,77 @@
 import React, { useCallback, useState } from "react";
 
+
+// with api 
+// Auto-suggesting search box.
+// import "./styles.css";
+// import React, { useState, useEffect, useRef, useCallback } from "react";
+
+// export default function App() {
+//   const [results, setResults] = useState([]);
+//   const [searchText, setSearchText] = useState("");
+
+//   const fetchResults = async (query) => {
+//     if (!query) return;
+//     try {
+//       console.log("call");
+//       const res = await fetch(
+//         `https://dummyjson.com/recipes/search?q=${query}`
+//       );
+//       const data = await res.json();
+//       console.log(data, "j");
+//       setResults(data.recipes);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   const debounce = (cb, del) => {
+//     let timer;
+//     return (...args) => {
+//       clearTimeout(timer);
+//       timer = setTimeout(() => {
+//         cb(...args);
+//       }, del);
+//     };
+//   };
+
+//   const debouncedQuery = useCallback(debounce(fetchResults, 300), []);
+
+//   useEffect(() => {
+//     console.log("run");
+//     debouncedQuery(searchText);
+//   }, [searchText, debouncedQuery]);
+
+//   const handleChange = (e) => {
+//     const value = e.target.value;
+//     setSearchText(value);
+//   };
+
+//   return (
+//     <div className="App">
+//       <input
+//         id="search"
+//         type="search"
+//         placeholder="Search"
+//         value={searchText}
+//         onChange={handleChange}
+//       />
+//       <div id="results">
+//         {results.map((result, idx) => (
+//           <div
+//             key={idx}
+//             id="result"
+//             onClick={() => setSearchText(result.name)} // FIX: Set name instead of object
+//           >
+//             {result.name}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+
 const AutoComplete = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [results, setResults] = useState<string[]>([]);

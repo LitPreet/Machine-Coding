@@ -21,6 +21,7 @@ const GridLightCells = () => {
     [1, 1, 1],
     [1, 1, 1],
   ];
+  
   const deactivateCells = () => {
     setDeactivating(true)
     const timer = setInterval(() => {
@@ -36,6 +37,7 @@ const GridLightCells = () => {
       })
     },300)
   };
+
   const activateCells = (index: number) => {
     const newOrder = [...order, index];
     setOrder(newOrder);

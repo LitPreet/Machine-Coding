@@ -20,7 +20,7 @@ const ProgressBar: React.FC = () => {
 
   const styles: { [key: string]: CSSProperties } = {
     container: {
-      width: '100%',
+      width: '400px',
       height: '30px',
       backgroundColor: '#e0e0de',
       borderRadius: '15px',
@@ -31,10 +31,10 @@ const ProgressBar: React.FC = () => {
       backgroundColor: '#3b82f6',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'end',
       color: '#fff',
-      transition: 'width 0.1s ease-in-out',
-      width: `${progress}%`, // Dynamic width based on progress
+      transform:`translateX(${progress-100}%)`,
+      transition: 'transform 0.1s ease-in-out',
     },
     progressText: {
       fontWeight: 'bold',

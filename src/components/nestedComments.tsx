@@ -100,6 +100,23 @@ const CommentsSection: React.FC = () => {
   ]);
   const [newCommentText, setNewCommentText] = useState('');
 
+
+  
+  const handleEdit = (id: number, newText: string) => {
+    const updateComments = (comments: Comment[]): Comment[] =>
+      comments.map((comment) =>
+        comment.id === id
+          ? { ...comment, text: newText }
+          : { ...comment, replies: updateComments(comment.replies) }
+      );
+    setComments(updateComments(comments));
+  };
+
+
+
+
+
+
   const handleAddComment = () => {
     if (newCommentText.trim()) {
       const newComment: Comment = {
@@ -113,15 +130,6 @@ const CommentsSection: React.FC = () => {
     }
   };
 
-  const handleEdit = (id: number, newText: string) => {
-    const updateComments = (comments: Comment[]): Comment[] =>
-      comments.map((comment) =>
-        comment.id === id
-          ? { ...comment, text: newText }
-          : { ...comment, replies: updateComments(comment.replies) }
-      );
-    setComments(updateComments(comments));
-  };
 
   const handleDelete = (id: number) => {
     const deleteComments = (comments: Comment[]): Comment[] =>
@@ -140,7 +148,7 @@ const CommentsSection: React.FC = () => {
           : { ...comment, replies: addReplyToComments(comment.replies) }
       );
     setComments(addReplyToComments(comments));
-  };
+    }
 
   return (
     <div>

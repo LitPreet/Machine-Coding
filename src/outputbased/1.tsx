@@ -39,7 +39,7 @@ import  { useEffect, useState } from "react";
 //   const [count, setCount] = useState(0);
 // console.log('render')
 //   const handleClick = () => {
-//     setCount((prev) => prev + 1);
+//     setCount(count+1);
 //     setCount((prev) => prev + 1);
 //   };
 
@@ -83,7 +83,7 @@ import  { useEffect, useState } from "react";
 //     setCount(count + 1);
 //     setCount((prev) => prev + 1);
 //     setCount(count + 1);
-//     setCount((prev) => prev + 1);
+//     // setCount((prev) => prev + 1);
 //   };
 
 //   return (
@@ -158,44 +158,44 @@ import  { useEffect, useState } from "react";
 
 // import React, { useState } from "react";
 
-function Appy1() {
-  const [text, setText] = useState("Hello");
+// function Appy1() {
+//   const [text, setText] = useState("Hello");
 
-  return (
-    <div>
-      <button onClick={() => setText("Hello")}>Say Hello</button>
-      <button onClick={() => setText("Hi")}>Say Hi</button>
-      {text === "Hello" ? <p>Hello</p> : <p>Hi</p>}
-    </div>
-  );
-}
-
-export default Appy1;
-
-
-// import React, { createContext, useContext } from "react";
-
-// const MyContext = createContext();
-
-// function Parent() {
-//   return (
-//     <MyContext.Provider value="React">
-//       <Child />
-//     </MyContext.Provider>
-//   );
-// }
-
-// function Child() {
-//   const value = useContext(MyContext);
-//   return <p>{value}</p>;
-// }
-
-// function App() {
 //   return (
 //     <div>
-//       <Parent />
+//       <button onClick={() => setText("Hello")}>Say Hello</button>
+//       <button onClick={() => setText("Hi")}>Say Hi</button>
+//       {text === "Hello" ? <p>Hello</p> : <p>Hi</p>}
 //     </div>
 //   );
 // }
 
-// export default App;
+// export default Appy1;
+
+
+import  { createContext, useContext } from "react";
+
+const MyContext = createContext('');
+
+function Parent() {
+  return (
+    <MyContext.Provider value="React">
+      <Child />
+    </MyContext.Provider>
+  );
+}
+
+function Child() {
+  const value = useContext(MyContext);
+  return <p>{value}</p>;
+}
+
+function App() {
+  return (
+    <div>
+      <Parent />
+    </div>
+  );
+}
+
+export default App;

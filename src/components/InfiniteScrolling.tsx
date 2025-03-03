@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
 
+
+interface Post{
+    userId: number,
+    id: number,
+    title: string,
+    body: string
+}
 const InfiniteScrolling = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -18,7 +20,7 @@ const InfiniteScrolling = () => {
         `https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`
       );
       const data = await res.json();
-      setPosts((prev) => [...prev, ...data]);
+      setPosts((prev:Post[]) => [...prev, ...data]);
     } catch (err) {
       console.log(err);
     } finally {
@@ -31,9 +33,9 @@ const InfiniteScrolling = () => {
   }, [page]);
 
   // Throttle function to control function execution frequency
-  const throttle = (func: Function, delay: number) => {
+  const throttle = (func:Function, delay:number) => {
     let lastExecution = 0;
-    return (...args: any) => {
+    return (...args:any) => {
       const now = Date.now();
       if (now - lastExecution >= delay) {
         lastExecution = now;
@@ -61,17 +63,19 @@ const InfiniteScrolling = () => {
 
   return (
     <div className="my-2">
-      {posts && posts.length > 0 && posts.map((post: Post, i: number) => {
-        return (
-          <div
-            key={i}
-            className="p-2 my-2 bg-white border border-black flex flex-col items-center justify-center w-[800px]"
-          >
-            <p>{post.title}</p>
-            <p>{post.body}</p>
-          </div>
-        );
-      })}
+      {posts &&
+        posts.length > 0 &&
+        posts.map((post:Post, i) => {
+          return (
+            <div
+              key={i}
+              className="p-2 my-2 bg-white border border-black flex flex-col items-center justify-center w-[800px]"
+            >
+              <p>{post.title}</p>
+              <p>{post.body}</p>
+            </div>
+          );
+        })}
       {loading && <p>Loading...</p>}
     </div>
   );
