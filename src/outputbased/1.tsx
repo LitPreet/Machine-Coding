@@ -1,6 +1,29 @@
 import React from "react";
 import  { useEffect, useState } from "react";
 
+// import { useState, useEffect } from "react";
+
+function Appy() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("Hello");
+
+  useEffect(() => {
+    console.log("Effect runs");
+    return () => {
+      console.log("Cleanup runs");
+    };
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+      <button onClick={() => setText("Updated")}>Change Text</button>
+    </div>
+  );
+}
+
+export default Appy;
 
 // function RenderMe(){
 //   console.log("heys")
@@ -173,29 +196,29 @@ import  { useEffect, useState } from "react";
 // export default Appy1;
 
 
-import  { createContext, useContext } from "react";
+// import  { createContext, useContext } from "react";
 
-const MyContext = createContext('');
+// const MyContext = createContext('');
 
-function Parent() {
-  return (
-    <MyContext.Provider value="React">
-      <Child />
-    </MyContext.Provider>
-  );
-}
+// function Parent() {
+//   return (
+//     <MyContext.Provider value="React">
+//       <Child />
+//     </MyContext.Provider>
+//   );
+// }
 
-function Child() {
-  const value = useContext(MyContext);
-  return <p>{value}</p>;
-}
+// function Child() {
+//   const value = useContext(MyContext);
+//   return <p>{value}</p>;
+// }
 
-function App() {
-  return (
-    <div>
-      <Parent />
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <div>
+//       <Parent />
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
