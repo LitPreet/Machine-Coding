@@ -1,32 +1,28 @@
-import React, { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
 
-const UseMemo = () => {
-  const [show, setShow] = useState(false);
-  const [myNum, setMyNum] = useState(0);
+const UseMemoExample: React.FC = () => {
+  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(0);
 
-  const getValue = () => {
-    return setMyNum(myNum + 1);
-  };
-
-  const countNum = (num: number) => {
-    console.log("im here memo.jsx", num);
-    for (let i = 0; i <= 100000000; i++) { }
-    return num;
-  };
-
-  const checkData = useMemo(() => {
-    return countNum(myNum)
-  },[myNum]);
+  // useMemo to memoize the expensive calculation
+  const expensiveCalculation = useMemo(() => {
+    console.log("Running expensive calculation...");
+    return number * 2;
+  }, [number]); // Recompute only when `number` changes
 
   return (
     <div>
-      <button onClick={getValue} className="bg-blue-400 p-2">Counter</button>
-      <p>My new Number is: {checkData}</p>
-      <button onClick={() => setShow(!show)} className="bg-yellow-600 p-2">
-        {show ? "you clicked me" : "click me plz"}
+      <h1>useMemo Example</h1>
+      <p>Expensive Calculation (number * 2): {expensiveCalculation}</p>
+      
+      <button onClick={() => setNumber(number + 1)}>
+        Increment Number
       </button>
+      <br />
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
     </div>
   );
 };
 
-export default UseMemo;
+export default UseMemoExample;
